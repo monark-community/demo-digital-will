@@ -1,0 +1,243 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * WillChain identity: paper and ink, a ledger-green primary, brass for
+ * waiting states and sealing wax for seals and executed records.
+ * Base structure from the Monark UI registry theme, colours and radius
+ * overridden per docs/site-plan.md section 8 (independent product).
+ */
+
+@theme inline {
+  --radius: 0.25rem;
+
+  --font-sans: var(--font-public-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-serif: var(--font-newsreader), ui-serif, Georgia, "Times New Roman", serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, "Cascadia Mono", monospace;
+
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --color-brass: var(--brass);
+  --color-brass-soft: var(--brass-soft);
+  --color-wax: var(--wax);
+  --color-wax-soft: var(--wax-soft);
+  --color-ledger-soft: var(--ledger-soft);
+
+  --radius-sm: calc(var(--radius) * 0.75);
+  --radius-md: var(--radius);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.5);
+  --radius-2xl: calc(var(--radius) * 2);
+  --radius-3xl: calc(var(--radius) * 2.5);
+  --radius-4xl: calc(var(--radius) * 3);
+
+  --ease-quill: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+:root {
+  --background: #f5f1e8;
+  --foreground: #1f1d1a;
+  --card: #fbf9f4;
+  --card-foreground: #1f1d1a;
+  --popover: #fbf9f4;
+  --popover-foreground: #1f1d1a;
+  --primary: #2f4a3c;
+  --primary-foreground: #f7f3ea;
+  --secondary: #eae4d7;
+  --secondary-foreground: #1f1d1a;
+  --muted: #eae4d7;
+  --muted-foreground: #5c554a;
+  --accent: #e6dcc4;
+  --accent-foreground: #1f1d1a;
+  --destructive: #a3302a;
+  --destructive-foreground: #fbf9f4;
+  --border: #d3c9b5;
+  --input: rgb(31 29 26 / 0.35);
+  --ring: #2f4a3c;
+  --chart-1: #2f4a3c;
+  --chart-2: #9a6f22;
+  --chart-3: #7a2e2a;
+  --chart-4: #4f6b7a;
+  --chart-5: #857b68;
+  --brass: #7f5a14;
+  --brass-soft: #efe3c6;
+  --wax: #7a2e2a;
+  --wax-soft: #f1dcd7;
+  --ledger-soft: #dde6dc;
+  color-scheme: light;
+}
+
+.dark {
+  --background: #161512;
+  --foreground: #ece6d9;
+  --card: #1e1c18;
+  --card-foreground: #ece6d9;
+  --popover: #1e1c18;
+  --popover-foreground: #ece6d9;
+  --primary: #a9c9b2;
+  --primary-foreground: #14211a;
+  --secondary: #28251f;
+  --secondary-foreground: #ece6d9;
+  --muted: #28251f;
+  --muted-foreground: #aba291;
+  --accent: #302b22;
+  --accent-foreground: #ece6d9;
+  --destructive: #e77c70;
+  --destructive-foreground: #1a0f0d;
+  --border: #3a352c;
+  --input: rgb(236 230 217 / 0.35);
+  --ring: #a9c9b2;
+  --chart-1: #a9c9b2;
+  --chart-2: #d9b46a;
+  --chart-3: #d98a7f;
+  --chart-4: #93b2c2;
+  --chart-5: #b8ae9a;
+  --brass: #d9b46a;
+  --brass-soft: #332a17;
+  --wax: #d98a7f;
+  --wax-soft: #3a211d;
+  --ledger-soft: #1f2d24;
+  color-scheme: dark;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "kern", "liga";
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-serif;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  ::selection {
+    background: var(--accent);
+    color: var(--accent-foreground);
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Legal-document double rule used between sections. */
+  .double-rule {
+    height: 4px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  /* The will document: the only element with depth. */
+  .paper {
+    background: var(--card);
+    border: 1px solid var(--border);
+    box-shadow:
+      0 1px 0 rgb(31 29 26 / 0.04),
+      0 12px 32px -18px rgb(31 29 26 / 0.28);
+  }
+  .dark .paper {
+    box-shadow:
+      0 1px 0 rgb(0 0 0 / 0.3),
+      0 16px 40px -20px rgb(0 0 0 / 0.8);
+  }
+  .eyebrow {
+    @apply font-sans text-xs font-semibold tracking-[0.14em] uppercase text-muted-foreground;
+  }
+}
+
+@layer utilities {
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Stamp press used when a guardian confirms. */
+@keyframes stamp-in {
+  0% {
+    transform: scale(1.35) rotate(-8deg);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(0.96) rotate(-8deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(-8deg);
+    opacity: 1;
+  }
+}
+.animate-stamp {
+  animation: stamp-in 420ms var(--ease-quill) both;
+}
+
+@keyframes rise-in {
+  from {
+    transform: translateY(6px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+.animate-rise {
+  animation: rise-in 480ms var(--ease-quill) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  header,
+  footer,
+  [data-print-hide] {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+    color: #000;
+  }
+}
