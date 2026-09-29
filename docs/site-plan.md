@@ -48,8 +48,9 @@ Supporting benefits (outcomes, not features):
 
 - **Headline (EN):** Your keys shouldn't die with you. (6 words)
 - **Headline (FR):** Vos clés ne devraient pas partir avec vous.
-- **Subheadline (EN):** WillChain is a will for your wallets. Guardians you trust confirm your passing, a protection window gives you time to object, and only then does your crypto reach the people you named.
-- **Subheadline (FR):** WillChain, c'est un testament pour vos portefeuilles. Des gardiens de confiance confirment votre décès, une fenêtre de protection vous laisse le temps de vous y opposer, et c'est seulement ensuite que vos cryptos rejoignent les personnes que vous avez désignées.
+- **Subheadline (EN, 23 words):** Guardians you trust confirm your passing. A window gives you time to object. Only then does your crypto reach the people you named.
+- **Subheadline (FR):** Des gardiens de confiance confirment votre décès. Une fenêtre vous laisse le temps de vous y opposer. Ensuite seulement, vos cryptos rejoignent vos proches.
+- No eyebrow and no disclaimer under the hero (restraint rules: the Demo chip in the header and the footer notice cover it).
 - **Primary CTA:** "Try the demo" / « Essayer la démo » → `/[locale]/app`
 - **Secondary CTA:** "How the window works" / « Comprendre la fenêtre » → `/[locale]/how-it-works`
 - **Hero visual:** product UI built in code, not a photo: a paper-like **will document** ("Will of 0x5A1e…c3D9") with its guardians listed and the **protection-window rule** beneath. On load, guardians confirm one by one; each stamp slides the execution marker left along the ruler, from "max 30 days" toward "min 7 days". It explains the product's core mechanism in five seconds and is the first signature moment. It is static (final state) with `prefers-reduced-motion`.
@@ -60,7 +61,7 @@ All routes live under `/en/…` and `/fr/…`; `/` redirects to the visitor's pr
 
 | Route | Purpose | Sections, in order |
 |-|-|-|
-| `/` (home) | Make the case in one scroll and send people into the demo. | 1. Hero with the animated will document. 2. "A seed phrase in a drawer is not a plan": three failure modes (lost keys, custodial probate, lawyers who can't sign). 3. "How a will moves": four-step band (write, guardians accept, the window, execution). 4. Who it's for: owners, guardians, estate administrators, with photos. 5. What the demo proves: four features, each linking to the flow that proves it. 6. FAQ. 7. Closing CTA. |
+| `/` (home) | Make the case in one scroll and send people into the demo. | Hero with the animated will document, then five sections: 1. "A seed phrase in a drawer is not a plan": three failure modes. 2. "How a will moves": four-step band. 3. Who it's for: owner, guardians, estate administrator, with photos. 4. FAQ (5 questions; the only FAQ on the site). 5. Closing CTA. (A sixth "What the demo proves" section was cut in the restraint pass.) |
 | `/how-it-works` | The trust argument. The protection window is the product; it needs space and an interactive explanation that the home page can't give. | 1. Intro. 2. The four roles. 3. Lifecycle diagram with the veto and cancel branches. 4. **Window calculator**: set min/max and toggle guardian confirmations, see the execution date move. 5. What happens at execution (snapshot, swap, lock, release). 6. The rules that protect you. 7. CTA. |
 | `/app` | The demo. Connect gate, then the dashboard: your wills, wills you guard, notifications. | Connect gate → dashboard (alerts, your wills, wills you guard, activity). |
 | `/app/new` | Will composer. | Name, guardians and weights, protection window, beneficiaries and shares, assets to fund, payout destination, review and deploy. |
@@ -71,18 +72,19 @@ All routes live under `/en/…` and `/fr/…`; `/` redirects to the visitor's pr
 
 No `/use-cases` or `/developers` page: the audience is individuals and families, and the "who it's for" section covers the use cases in three cards.
 
-**Header:** wordmark (→ home), "How it works", "Demo" (button), EN/FR switch, theme toggle; inside `/app` a subtle "Demo · simulated data" badge and the wallet control. Mobile: wordmark, demo button, menu sheet with the rest.
-**Footer:** wordmark and one-line pitch; links: How it works, Demo, Credits, Project page (monark.io), Source (GitHub); "Demo · simulated data"; "Testnet demo · not financial advice · no real funds"; "Built with Monark".
+**Header (the only top bar on marketing pages):** wordmark (→ home), "How it works", "Demo"; right side: a small brass "Demo" chip, EN/FR switch, theme toggle, "Try the demo" button. Mobile: wordmark, demo button, menu sheet with the links, Demo chip, EN/FR and theme.
+**App strip (only under `/app`):** one compact strip with the "Demo · simulated data" badge, "Demo controls" and the wallet control.
+**Footer:** wordmark and one-line pitch; links: How it works, Demo, Credits, Project page (monark.io), Source (GitHub); "Demo · simulated data"; "Built with Monark". The testnet / not-financial-advice line appears only in the wallet prompt of transactions that move value (deploy with funds, execute); the deploy prompt also carries the "not legal advice" note.
 
 ## 5. Feature highlights
 
 | Feature | User benefit | Where on the site | Proven by flow |
 |-|-|-|-|
-| Weighted guardians | No single person decides; people you trust more count more. | Home feature list, how-it-works roles, composer. | 2 (compose and deploy), 3 (guard) |
+| Weighted guardians | No single person decides; people you trust more count more. | Hero document (weights), how-it-works calculator, composer. | 2 (compose and deploy), 3 (guard) |
 | The protection window | Time to object that shrinks as more guardians agree. | Hero visual, how-it-works calculator, will page. | 3 (confirm a passing) |
-| Proof of life | One signature stops a false declaration. | Home feature list, will page alert. | 4 (veto) |
-| Stable, locked estate | Heirs receive a stable amount, not a volatile basket. | How-it-works execution section, will page. | 5 (execute) |
-| Estate record | The administrator gets a complete, verifiable record. | Home feature list, will page after execution. | 5 (execute) |
+| Proof of life | One signature stops a false declaration. | Home steps and FAQ, dashboard alert, will page. | 4 (veto) |
+| Stable, locked estate | Heirs receive a stable amount, not a volatile basket. | Home steps, how-it-works execution section, will page. | 5 (execute) |
+| Estate record | The administrator gets a complete, verifiable record. | Home "who it's for", will page after execution. | 5 (execute) |
 
 ## 6. Key flows
 
@@ -102,15 +104,15 @@ All strings live in `src/i18n/dictionaries/{en,fr}.ts`; below is the copy by sec
 
 ### Home
 
-**Hero** — see section 3. Eyebrow: EN "An on-chain will for self-custody" / FR « Un testament on-chain pour l'autocustodie ».
+**Hero** — see section 3.
 
 **Problem** — EN heading "A seed phrase in a drawer is not a plan." / FR « Une phrase secrète dans un tiroir, ce n'est pas un plan. »
 
 | EN | FR |
 |-|-|
-| **Too private.** If only you know where the keys are, they leave with you. The coins stay on-chain, untouched, forever. | **Trop secret.** Si vous êtes le seul à savoir où sont les clés, elles partent avec vous. Les fonds restent sur la chaîne, intouchables, pour toujours. |
+| **Too private.** If only you know where the keys are, they leave with you. The coins stay on-chain, untouched, forever. | **Trop secret.** Si vous seul savez où sont les clés, elles partent avec vous. Les fonds restent bloqués sur la chaîne. |
 | **Too exposed.** Give the phrase to someone "just in case" and they can empty the wallet tomorrow, with or without meaning to. | **Trop exposé.** Confiez la phrase à quelqu'un « au cas où », et il peut vider le portefeuille demain, volontairement ou non. |
-| **Too slow.** On an exchange, heirs face months of paperwork, and a notary still can't sign a transaction. | **Trop lent.** Sur une plateforme d'échange, vos proches affrontent des mois de démarches, et un notaire ne peut toujours pas signer une transaction. |
+| **Too slow.** On an exchange, heirs face months of paperwork, and a notary still can't sign a transaction. | **Trop lent.** Sur une plateforme, vos proches affrontent des mois de démarches. Et un notaire ne signe pas de transaction. |
 
 **How a will moves** — EN "How a will moves" / FR « Le parcours d'un testament »; link "The full mechanism" / « Le mécanisme en détail ».
 
@@ -118,7 +120,7 @@ All strings live in `src/i18n/dictionaries/{en,fr}.ts`; below is the copy by sec
 |-|-|-|
 | 1 | **Write it.** Choose guardians, a protection window, beneficiaries and the assets the will holds. You keep full control. | **Rédigez-le.** Choisissez vos gardiens, une fenêtre de protection, vos bénéficiaires et les actifs que le testament détient. Vous gardez la main. |
 | 2 | **Guardians accept.** Each one signs to take on the role. Until they all have, the will stays inactive. | **Les gardiens acceptent.** Chacun signe pour assumer son rôle. Tant que ce n'est pas fait, le testament reste inactif. |
-| 3 | **The window opens.** When a guardian confirms your passing, a countdown starts. Every further confirmation shortens it. You can stop it with one signature. | **La fenêtre s'ouvre.** Quand un gardien confirme votre décès, un compte à rebours démarre. Chaque confirmation suivante le raccourcit. Une seule signature de votre part l'arrête. |
+| 3 | **The window opens.** A guardian confirms your passing and a countdown starts. Each confirmation shortens it; one signature from you stops it. | **La fenêtre s'ouvre.** Un gardien confirme votre décès : le compte à rebours démarre. Chaque confirmation le raccourcit ; votre signature l'arrête. |
 | 4 | **The estate is settled.** Assets are recorded, converted to a stablecoin, locked, then released to the people you named. | **La succession est réglée.** Les actifs sont inventoriés, convertis en stablecoin, verrouillés, puis versés aux personnes que vous avez nommées. |
 
 **Who it's for** — EN "Three people, one plan" / FR « Trois personnes, un seul plan ».
@@ -127,22 +129,13 @@ All strings live in `src/i18n/dictionaries/{en,fr}.ts`; below is the copy by sec
 - Guardians — EN "**For the people you trust.** A clear role with no access to the funds: accept, and one day, confirm. Nothing more." / FR « **Pour vos proches de confiance.** Un rôle clair, sans accès aux fonds : accepter, puis un jour, confirmer. Rien de plus. »
 - Administrators — EN "**For whoever settles the estate.** A dated record of every asset, conversion and payment, ready for the notary." / FR « **Pour qui règle la succession.** Un relevé daté de chaque actif, conversion et versement, prêt pour le notaire. »
 
-**What the demo proves** — EN "Try each promise yourself" / FR « Vérifiez chaque promesse vous-même ».
-
-- Weighted guardians — EN "A notary can count double, a friend once. Nobody decides alone." / FR « Un notaire peut compter double, un ami une fois. Personne ne décide seul. »
-- Proof of life — EN "Someone confirmed your passing by mistake? Hold one button. The window closes." / FR « Quelqu'un a confirmé votre décès par erreur ? Maintenez un bouton. La fenêtre se referme. »
-- A stable estate — EN "At execution, everything is converted to a stablecoin and locked, so heirs aren't handed a market swing." / FR « À l'exécution, tout est converti en stablecoin et verrouillé : vos héritiers ne reçoivent pas les caprices du marché. »
-- The estate record — EN "Balances, conversions and payments with their transaction hashes, on one printable page." / FR « Soldes, conversions et versements avec leurs empreintes de transaction, sur une seule page imprimable. »
-- Each item ends with "Try it in the demo" / « L'essayer dans la démo ».
-
 **FAQ** — EN "Questions people ask" / FR « Les questions qu'on nous pose ».
 
 1. EN "Can a guardian take my crypto?" — "No. Guardians only sign to accept their role and, later, to confirm. The funds can only go to the beneficiaries you named, and only after the window." / FR « Un gardien peut-il prendre mes cryptos ? » — « Non. Les gardiens signent seulement pour accepter leur rôle puis, plus tard, pour confirmer. Les fonds ne peuvent aller qu'aux bénéficiaires que vous avez nommés, et seulement après la fenêtre. »
 2. EN "What if a guardian confirms by mistake, or on purpose?" — "The first confirmation only opens the window. You sign a proof of life, the declaration is cancelled and nobody can declare again for three days." / FR « Et si un gardien confirme par erreur, ou exprès ? » — « La première confirmation ne fait qu'ouvrir la fenêtre. Vous signez une preuve de vie, la déclaration est annulée et personne ne peut en refaire une pendant trois jours. »
 3. EN "What if a guardian dies or disappears?" — "Confirmations speed things up but are never required. Without them, the will simply waits for the maximum window." / FR « Et si un gardien décède ou disparaît ? » — « Les confirmations accélèrent les choses mais ne sont jamais obligatoires. Sans elles, le testament attend simplement la durée maximale. »
-4. EN "Can I change my will?" — "Yes: guardians, weights, window, beneficiaries and funds, as long as no window is running. Once a window ends, the will is final." / FR « Puis-je modifier mon testament ? » — « Oui : gardiens, poids, fenêtre, bénéficiaires et fonds, tant qu'aucune fenêtre n'est en cours. Une fois la fenêtre écoulée, le testament est définitif. »
-5. EN "Does it replace a notarial or legal will?" — "No. It settles the crypto you put in it and produces a record for your notary. Keep a legal will for everything else." / FR « Est-ce que ça remplace un testament notarié ? » — « Non. Il règle les cryptos que vous y placez et produit un relevé pour votre notaire. Gardez un testament légal pour tout le reste. »
-6. EN "Is this demo real?" — "No. It runs on simulated testnet data in your browser. No wallet, funds or personal data are used." / FR « Cette démo est-elle réelle ? » — « Non. Elle fonctionne avec des données de testnet simulées, dans votre navigateur. Aucun portefeuille, aucuns fonds ni aucune donnée personnelle ne sont utilisés. »
+4. EN "Does it replace a notarial or legal will?" — "No. It settles the crypto you put in it and produces a record for your notary. Keep a legal will for everything else." / FR « Est-ce que ça remplace un testament notarié ? » — « Non. Il règle les cryptos que vous y placez et produit un relevé pour votre notaire. Gardez un testament légal pour tout le reste. »
+5. EN "Is this demo real?" — "No. It runs on simulated testnet data in your browser. No wallet, funds or personal data are used." / FR « Cette démo est-elle réelle ? » — « Non. Elle fonctionne avec des données de testnet simulées, dans votre navigateur. Aucun portefeuille, aucuns fonds ni aucune donnée personnelle ne sont utilisés. »
 
 **Closing CTA** — EN "Write a will in three minutes. Then try to break it." / FR « Rédigez un testament en trois minutes. Puis essayez de le prendre en défaut. »; button "Try the demo" / « Essayer la démo ».
 
@@ -175,9 +168,13 @@ Key UI strings (full list in the dictionaries): "Connect demo wallet" / « Conne
 
 ### Disclaimers
 
-- Everywhere (footer, app header badge): "Demo · simulated data" / « Démo · données simulées ».
-- Near every action that moves value (deploy with funds, execute): "Testnet demo · not financial advice · no real funds" / « Démo sur testnet · pas un conseil financier · aucun fonds réel ». The composer adds: "Not legal advice. A WillChain will doesn't replace a legal will." / « Pas un conseil juridique. Un testament WillChain ne remplace pas un testament légal. »
+- Footer on every page, and the badge in the `/app` strip: "Demo · simulated data" / « Démo · données simulées ». A "Demo" / « Démo » chip sits in the header.
+- Once per transaction that moves value, inside its wallet prompt (deploy with funds, execute): "Testnet demo · not financial advice · no real funds" / « Démo sur testnet · pas un conseil financier · aucuns fonds réels ». The deploy prompt adds: "Not legal advice. A WillChain will doesn't replace a legal will." / « Pas un conseil juridique. Un testament WillChain ne remplace pas un testament légal. »
 - Footer credit: "Built with Monark" / « Propulsé par Monark ».
+
+### Restraint pass (what shipped)
+
+Applied after the owner's "too loaded" feedback: no hero eyebrow or hero disclaimer; home cut to five sections (the "What the demo proves" list is gone) and a 5-question FAQ (dropped "Can I change my will?"); no lead paragraphs above the dashboard or the composer; composer field help sits behind an info toggle next to each heading; the will page's window rule sits behind "How is this calculated?" with a link to `/how-it-works`; the status explanation under each will title, the execute hint, the sign-in note and the network badge strip were removed; disclaimers moved to the footer, header chip and wallet prompts only.
 
 ## 8. Aesthetics
 
@@ -272,9 +269,9 @@ Photography of **hands, paper and kitchen tables**: real, unposed domestic momen
 
 | Asset | Purpose | Placement |
 |-|-|-|
-| Photo: grandparent with grandchild at home | "For the one who holds the keys": family is why you plan | Home, who it's for, card 1 |
-| Photo: two people talking at a kitchen table / hands | "For the people you trust" | Home, who it's for, card 2 |
-| Photo: desk with papers and a pen | "For whoever settles the estate" | Home, who it's for, card 3 |
+| `owner.jpg`: a grandmother and granddaughter at the breakfast table (Vitaly Gariev) | "For the one who holds the keys": family is why you plan | Home, who it's for, card 1 |
+| `guardians.jpg`: two people's hands around mugs at a table (Priscilla Du Preez) | "For the people you trust" | Home, who it's for, card 2 |
+| `administrator.jpg`: a fountain pen on a stack of papers (Andres Vera) | "For whoever settles the estate" | Home, who it's for, card 3 |
 
 Unsplash, free licence only, downloaded to `public/images/`, served with `next/image`, listed in `docs/assets.md` and credited on `/credits`.
 
@@ -301,3 +298,14 @@ Off-ramp conversion fees from partners are passed through at cost and shown befo
 - Inactivity-based triggers (the Lovable idea); the project page centres on guardian confirmations, so we do too.
 - Document storage on IPFS, social recovery, account creation and email notifications.
 - Multiple owner wallets, contact management, legal validity in any jurisdiction.
+
+## 12. Decisions made while working unattended
+
+- **Product source of truth.** The project page's "Primary Member / Secondary Members / protection delay / proof of life / snapshot / stablecoin lock / fiat off-ramp" model drives everything; the separate `monark-community/digital-will` implementation confirmed the exact window formula, the 3-day veto cooldown and the lifecycle. Beneficiaries with shares are kept because the project page says the contract defines "beneficiaries and asset allocations".
+- **Payout.** Execution releases either to beneficiaries' wallets in tUSDC (seeded wills) or to a pre-linked estate bank account with a simulated compliance check (selectable in the composer), matching the project page's later off-ramp phases.
+- **One persona.** The visitor is Camille Tremblay: owner of one will (with a live declaration to veto) and guardian on two others (one invitation, one nearly executable), so every flow is reachable in a single session without role switching.
+- **Demo clock.** Windows are measured in days, so the demo controls can advance a clock (+1 / +7 days) to show cooldowns ending and windows elapsing.
+- **Tokens.** The Monark testnet token set (tETH, tWBTC, tUSDC, tDAI, tLINK) and its reference prices are reused for consistency with the other demos; amounts in USD are shown as "US$".
+- **Toasts** sit bottom-right on desktop and along the bottom on phones: every action's status is shown inline next to its button at the top of the page, so toasts only announce background events (guardians accepting, windows elapsing) and never cover the element they report on.
+- **No `/use-cases` or `/developers` page**, and no brand page; `/credits` exists because the photo licence rules ask for credits.
+- **Unsplash search** was done through the site's public search pages; downloads used the free `/download` endpoint to guarantee no Unsplash+ image.
