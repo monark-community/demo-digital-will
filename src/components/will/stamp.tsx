@@ -29,7 +29,7 @@ export function WaxSeal({ label, date, className }: { label: string; date: strin
       </svg>
       <div className="relative flex flex-col items-center text-center text-background">
         <span className="font-serif text-base leading-none font-semibold italic">{label}</span>
-        <span className="mt-1 text-[0.625rem] font-semibold tracking-wider uppercase tabular">{date}</span>
+        <span className="mt-1 max-w-[4.75rem] text-[0.5625rem] leading-tight font-semibold tracking-wide uppercase tabular">{date}</span>
       </div>
     </div>
   )

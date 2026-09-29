@@ -101,7 +101,7 @@ export function HoldButton({
         <HeartPulseIcon className={cn("size-5", progress > 0.12 && "text-primary-foreground")} aria-hidden="true" />
         <span className={cn(progress > 0.45 && "text-primary-foreground")}>{holding ? holdingLabel : label}</span>
       </button>
-      <p id={hintId} className="mt-2 text-xs text-muted-foreground">
+      <p id={hintId} className="sr-only">
         {instructions}
       </p>
     </div>

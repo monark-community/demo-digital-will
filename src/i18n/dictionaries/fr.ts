@@ -22,6 +22,7 @@ const fr: Dictionary = {
   common: {
     skip: "Aller au contenu",
     demoBadge: "Démo · données simulées",
+    demoChip: "Démo",
     finance: "Démo sur testnet · pas un conseil financier · aucuns fonds réels",
     legal: "Pas un conseil juridique. Un testament WillChain ne remplace pas un testament légal.",
     builtWith: "Propulsé par Monark",
@@ -52,12 +53,10 @@ const fr: Dictionary = {
   },
   footer: {
     pitch: "Un testament on-chain pour les cryptos que vous détenez vous-même.",
-    rights: "Une démonstration sur testnet. Rien ici n'a valeur de testament.",
   },
   home: {
-    eyebrow: "Un testament on-chain pour l'autocustodie",
     title: "Vos clés ne devraient pas partir avec vous.",
-    lead: "WillChain, c'est un testament pour vos portefeuilles. Des gardiens de confiance confirment votre décès, une fenêtre de protection vous laisse le temps de vous y opposer, et c'est seulement ensuite que vos cryptos rejoignent les personnes que vous avez désignées.",
+    lead: "Des gardiens de confiance confirment votre décès. Une fenêtre vous laisse le temps de vous y opposer. Ensuite seulement, vos cryptos rejoignent vos proches.",
     ctaPrimary: "Essayer la démo",
     ctaSecondary: "Comprendre la fenêtre",
     hero: {
@@ -78,18 +77,18 @@ const fr: Dictionary = {
     problem: {
       title: "Une phrase secrète dans un tiroir, ce n'est pas un plan.",
       items: [
-        { title: "Trop secret.", body: "Si vous êtes le seul à savoir où sont les clés, elles partent avec vous. Les fonds restent sur la chaîne, intouchables, pour toujours." },
+        { title: "Trop secret.", body: "Si vous seul savez où sont les clés, elles partent avec vous. Les fonds restent bloqués sur la chaîne." },
         { title: "Trop exposé.", body: "Confiez la phrase à quelqu'un « au cas où », et il peut vider le portefeuille demain, volontairement ou non." },
-        { title: "Trop lent.", body: "Sur une plateforme d'échange, vos proches affrontent des mois de démarches, et un notaire ne peut toujours pas signer une transaction." },
+        { title: "Trop lent.", body: "Sur une plateforme, vos proches affrontent des mois de démarches. Et un notaire ne signe pas de transaction." },
       ],
     },
     steps: {
       title: "Le parcours d'un testament",
       more: "Le mécanisme en détail",
       items: [
-        { title: "Rédigez-le.", body: "Choisissez vos gardiens, une fenêtre de protection, vos bénéficiaires et les actifs que le testament détient. Vous gardez la main." },
+        { title: "Rédigez-le.", body: "Choisissez vos gardiens, une fenêtre de protection, vos bénéficiaires et les actifs du testament. Vous gardez la main." },
         { title: "Les gardiens acceptent.", body: "Chacun signe pour assumer son rôle. Tant que ce n'est pas fait, le testament reste inactif." },
-        { title: "La fenêtre s'ouvre.", body: "Quand un gardien confirme votre décès, un compte à rebours démarre. Chaque confirmation suivante le raccourcit. Une seule signature de votre part l'arrête." },
+        { title: "La fenêtre s'ouvre.", body: "Un gardien confirme votre décès : le compte à rebours démarre. Chaque confirmation le raccourcit ; votre signature l'arrête." },
         { title: "La succession est réglée.", body: "Les actifs sont inventoriés, convertis en stablecoin, verrouillés, puis versés aux personnes que vous avez nommées." },
       ],
     },
@@ -101,24 +100,12 @@ const fr: Dictionary = {
         { title: "Pour qui règle la succession.", body: "Un relevé daté de chaque actif, conversion et versement, prêt pour le notaire.", alt: "Un stylo-plume posé sur une pile de papiers" },
       ],
     },
-    proof: {
-      title: "Vérifiez chaque promesse vous-même",
-      lead: "Chaque affirmation de cette page est un parcours que vous pouvez mener jusqu'au bout dans la démo, avec l'attente, les confirmations et les échecs.",
-      cta: "L'essayer dans la démo",
-      items: [
-        { title: "Des gardiens pondérés", body: "Un notaire peut compter double, un ami une fois. Personne ne décide seul." },
-        { title: "La preuve de vie", body: "Quelqu'un a confirmé votre décès par erreur ? Maintenez un bouton. La fenêtre se referme." },
-        { title: "Une succession stable", body: "À l'exécution, tout est converti en stablecoin et verrouillé : vos héritiers ne reçoivent pas les caprices du marché." },
-        { title: "Le relevé de succession", body: "Soldes, conversions et versements avec leurs empreintes de transaction, sur une seule page imprimable." },
-      ],
-    },
     faq: {
       title: "Les questions qu'on nous pose",
       items: [
         { q: "Un gardien peut-il prendre mes cryptos ?", a: "Non. Les gardiens signent seulement pour accepter leur rôle puis, plus tard, pour confirmer. Les fonds ne peuvent aller qu'aux bénéficiaires que vous avez nommés, et seulement après la fenêtre." },
         { q: "Et si un gardien confirme par erreur, ou exprès ?", a: "La première confirmation ne fait qu'ouvrir la fenêtre. Vous signez une preuve de vie, la déclaration est annulée et personne ne peut en refaire une pendant trois jours." },
         { q: "Et si un gardien décède ou disparaît ?", a: "Les confirmations accélèrent les choses mais ne sont jamais obligatoires. Sans elles, le testament attend simplement la durée maximale." },
-        { q: "Puis-je modifier mon testament ?", a: "Oui : gardiens, poids, fenêtre, bénéficiaires et fonds, tant qu'aucune fenêtre n'est en cours. Une fois la fenêtre écoulée, le testament est définitif." },
         { q: "Est-ce que ça remplace un testament notarié ?", a: "Non. Il règle les cryptos que vous y placez et produit un relevé pour votre notaire. Gardez un testament légal pour tout le reste." },
         { q: "Cette démo est-elle réelle ?", a: "Non. Elle fonctionne avec des données de testnet simulées, dans votre navigateur. Aucun portefeuille, aucuns fonds ni aucune donnée personnelle ne sont utilisés." },
       ],
@@ -272,7 +259,6 @@ const fr: Dictionary = {
       connect: "Connecter le portefeuille de démo",
       connecting: "En attente de la signature…",
       rejected: "Vous avez refusé la demande de connexion. Rien n'a été partagé.",
-      note: "Cette démo utilise un portefeuille simulé avec des soldes de testnet. Vous serez connecté en tant que Camille Tremblay.",
     },
     wallet: { disconnect: "Se déconnecter", network: "Testnet Sepolia", name: "Camille Tremblay" },
     controls: {
@@ -299,7 +285,6 @@ const fr: Dictionary = {
     },
     dashboard: {
       title: "Votre planification successorale",
-      lead: "Les testaments que vous avez rédigés, ceux dont vous êtes gardien, et tout ce qui s'est passé.",
       yours: "Vos testaments",
       guarding: "Testaments dont vous êtes gardien",
       activity: "Activité",
@@ -314,7 +299,7 @@ const fr: Dictionary = {
       inviteCta: "Voir l'invitation",
       holding: "Détient {value}",
       owner: "Titulaire : {name}",
-      guardiansCount: "{accepted} gardien(s) sur {total} ont accepté",
+      guardiansCount: "Acceptés : {accepted} sur {total}",
       open: "Ouvrir",
     },
     status: {
@@ -364,6 +349,8 @@ const fr: Dictionary = {
       roleGuardian: "Gardien (poids {n})",
       window: {
         title: "Fenêtre de protection",
+        how: "Comment est-ce calculé ?",
+        more: "La règle complète",
         rule: "Entre {min} et {max} jours après la première confirmation, moins longtemps à mesure que les gardiens confirment.",
         idleTitle: "Aucune déclaration",
         idleBody: "Si un gardien confirmait aujourd'hui, la succession pourrait être exécutée entre le {earliest} et le {latest}.",
@@ -390,7 +377,6 @@ const fr: Dictionary = {
         confirm: "Confirmer le décès",
         confirmHint: "Ne confirmez que si vous savez que le titulaire est décédé. Il peut encore l'arrêter pendant la fenêtre.",
         execute: "Exécuter le testament",
-        executeHint: "Convertit les actifs en tUSDC, les verrouille et les verse aux bénéficiaires.",
         hold: "Maintenez pour prouver que vous êtes en vie",
         holdKeyboard: "Maintenez Espace ou Entrée enfoncée une seconde et demie.",
         holding: "Continuez d'appuyer…",
@@ -440,11 +426,10 @@ const fr: Dictionary = {
     },
     composer: {
       title: "Rédiger un testament",
-      lead: "Tout ce qui suit pourra être modifié plus tard, tant qu'aucune fenêtre n'est en cours.",
       example: "Remplir avec un exemple",
+      hintLabel: "À propos : {title}",
       name: "Nom du testament",
       namePlaceholder: "Épargne familiale",
-      nameHint: "Seuls vous et vos gardiens le voyez.",
       guardians: {
         title: "Gardiens",
         hint: "Choisissez au moins deux personnes. Le poids indique combien compte chaque confirmation.",
@@ -561,6 +546,16 @@ const fr: Dictionary = {
     activity: {
       deployed: "{actor} a déployé le testament",
       invited: "{actor} a invité {target} comme gardien",
+      invitedYou: "{actor} vous a invité comme gardien",
+      you: {
+        deployed: "Vous avez déployé le testament",
+        invited: "Vous avez invité {target} comme gardien",
+        accepted: "Vous avez accepté le rôle de gardien",
+        declined: "Vous avez refusé le rôle de gardien",
+        confirmed: "Vous avez confirmé le décès",
+        vetoed: "Vous avez signé une preuve de vie",
+        executed: "Vous avez exécuté le testament",
+      },
       accepted: "{actor} a accepté le rôle de gardien",
       declined: "{actor} a refusé le rôle de gardien",
       confirmed: "{actor} a confirmé le décès",

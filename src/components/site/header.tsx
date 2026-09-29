@@ -16,7 +16,7 @@ export function SiteHeader({ locale, dict }: { locale: Locale; dict: Dictionary 
     { href: href(locale, "/app"), label: dict.nav.demoShort },
   ]
   return (
-    <header className="sticky top-0 z-40 border-b bg-background/95 supports-[backdrop-filter]:bg-background/90">
+    <header className="sticky top-0 z-40 border-b bg-background">
       <div className="mx-auto flex h-16 max-w-6xl items-center gap-4 px-4 sm:px-6">
         <Link href={href(locale)} aria-label={dict.common.home} className="-ml-1 rounded-md p-1">
           <Wordmark />
@@ -26,6 +26,10 @@ export function SiteHeader({ locale, dict }: { locale: Locale; dict: Dictionary 
         </nav>
         <div className="ml-auto flex items-center gap-1.5 sm:gap-2">
           <div className="hidden items-center gap-1.5 md:flex">
+            <span title={dict.common.demoBadge} className="mr-1 inline-flex items-center gap-1.5 rounded-full border border-brass/40 bg-brass-soft px-2.5 py-0.5 text-xs font-semibold text-brass">
+              <span className="size-1.5 rounded-full bg-brass" aria-hidden="true" />
+              {dict.common.demoChip}
+            </span>
             <LocaleSwitch locale={locale} label={dict.common.language} names={dict.common.languageNames} />
             <ThemeToggle label={dict.common.theme} />
           </div>
@@ -36,6 +40,10 @@ export function SiteHeader({ locale, dict }: { locale: Locale; dict: Dictionary 
             </Link>
           </Button>
           <MobileMenu items={items} openLabel={dict.common.openMenu} closeLabel={dict.common.closeMenu} title="WillChain">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-brass/40 bg-brass-soft px-2.5 py-0.5 text-xs font-semibold text-brass">
+              <span className="size-1.5 rounded-full bg-brass" aria-hidden="true" />
+              {dict.common.demoChip}
+            </span>
             <LocaleSwitch locale={locale} label={dict.common.language} names={dict.common.languageNames} />
             <ThemeToggle label={dict.common.theme} />
           </MobileMenu>

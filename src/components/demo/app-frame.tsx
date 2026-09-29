@@ -6,7 +6,6 @@ import { toast } from "sonner"
 import { SealMark } from "@/components/brand/logo"
 import { Button } from "@/components/ui/button"
 import { ConnectWallet } from "@/components/ui/connect-wallet"
-import { NetworkBadge } from "@/components/ui/network-badge"
 import { useTx } from "@/lib/demo/chain"
 import { signIn, signOut } from "@/lib/demo/ops"
 import { useDemo, useStorageOk } from "@/lib/demo/store"
@@ -22,7 +21,6 @@ function DeskBar() {
     <div className="border-b bg-card/60" data-print-hide>
       <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-3 gap-y-2 px-4 py-2.5 sm:px-6">
         <span className="rounded-sm border border-brass/50 bg-brass-soft px-1.5 py-0.5 text-xs font-semibold text-brass">{common.demoBadge}</span>
-        <NetworkBadge name={app.wallet.network} variant="outline" className="hidden sm:inline-flex" icon={<span className="block size-full rounded-full bg-brass" />} />
         <div className="ml-auto flex items-center gap-2">
           <DemoControls />
           <ConnectWallet
@@ -68,7 +66,6 @@ function Gate() {
             {g.rejected}
           </p>
         ) : null}
-        <p className="mt-6 border-t pt-4 text-xs text-muted-foreground">{g.note}</p>
       </div>
     </section>
   )

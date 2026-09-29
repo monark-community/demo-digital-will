@@ -147,6 +147,8 @@ export interface TxSummary {
   lines: { label: string; value: string }[]
   /** Shown in the prompt for actions that move value. */
   movesValue?: boolean
+  /** Also show the "not legal advice" note (deploying a will). */
+  legal?: boolean
 }
 
 export type TxPhase = "idle" | "signing" | "pending" | "confirmed" | "failed"

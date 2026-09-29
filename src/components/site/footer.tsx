@@ -41,15 +41,13 @@ export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary 
         </div>
         <div className="double-rule mt-8" aria-hidden="true" />
         <div className="mt-5 flex flex-col gap-3 text-[0.8125rem] text-muted-foreground md:flex-row md:items-center md:justify-between">
-          <p className="flex flex-wrap items-center gap-x-3 gap-y-1">
+          <p>
             <span className="rounded-sm border border-brass/50 bg-brass-soft px-1.5 py-0.5 font-semibold text-brass">{dict.common.demoBadge}</span>
-            <span>{dict.common.finance}</span>
           </p>
           <a href={MONARK_URL} target="_blank" rel="noopener noreferrer" className="text-[0.8125rem] text-muted-foreground hover:text-foreground hover:underline underline-offset-4">
             {dict.common.builtWith}
           </a>
         </div>
-        <p className="mt-2 text-[0.8125rem] text-muted-foreground">{dict.footer.rights}</p>
       </div>
     </footer>
   )

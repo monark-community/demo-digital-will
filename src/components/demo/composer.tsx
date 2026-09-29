@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowLeftIcon, BanknoteIcon, MinusIcon, PlusIcon, SparklesIcon, TriangleAlertIcon, WalletIcon, XIcon } from "lucide-react"
+import { ArrowLeftIcon, BanknoteIcon, InfoIcon, MinusIcon, PlusIcon, SparklesIcon, TriangleAlertIcon, WalletIcon, XIcon } from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useId, useMemo, useState } from "react"
@@ -50,17 +50,33 @@ function Chip({ person, pressed, onClick, label }: { person: Person; pressed: bo
   )
 }
 
+/** A form section whose explanation stays behind an info toggle until asked for. */
 function Fieldset({ title, hint, children, error, id }: { title: string; hint?: string; children: React.ReactNode; error?: string | null; id: string }) {
+  const [open, setOpen] = useState(false)
+  const hintLabel = t(useCopy().app.composer.hintLabel, { title })
   return (
-    <fieldset aria-describedby={hint ? `${id}-hint` : undefined} className="border-t border-foreground/15 pt-6">
-      <legend className="float-left w-full font-serif text-xl font-medium sm:text-2xl">{title}</legend>
-      {hint ? (
-        <p id={`${id}-hint`} className="clear-both pt-1 text-sm text-muted-foreground">
+    <fieldset className="border-t border-foreground/15 pt-6">
+      <legend className="float-left flex w-full items-center gap-2 font-serif text-xl font-medium sm:text-2xl">
+        {title}
+        {hint ? (
+          <button
+            type="button"
+            aria-expanded={open}
+            aria-controls={`${id}-hint`}
+            aria-label={hintLabel}
+            onClick={() => setOpen((o) => !o)}
+            className="grid size-8 place-items-center rounded-full text-muted-foreground hover:bg-accent hover:text-foreground"
+          >
+            <InfoIcon className="size-4" aria-hidden="true" />
+          </button>
+        ) : null}
+      </legend>
+      <div className="clear-both" />
+      {hint && open ? (
+        <p id={`${id}-hint`} className="pt-1 text-sm text-muted-foreground">
           {hint}
         </p>
-      ) : (
-        <div className="clear-both" />
-      )}
+      ) : null}
       <div className="mt-4">{children}</div>
       {error ? (
         <p className="mt-3 flex items-start gap-1.5 text-sm font-medium text-destructive">
@@ -75,7 +91,7 @@ function Fieldset({ title, hint, children, error, id }: { title: string; hint?: 
 export function Composer() {
   const demo = useDemo()
   const router = useRouter()
-  const { app, seed, locale, common } = useCopy()
+  const { app, seed, locale } = useCopy()
   const c = app.composer
   const tx = useTx()
   const uid = useId()
@@ -155,6 +171,7 @@ export function Composer() {
         kind: "tx",
         title: t(app.prompt.titles.deploy, { name: name.trim() }),
         movesValue: true,
+        legal: true,
         lines: [
           { label: app.prompt.lines.guardians, value: guardians.map((g) => contacts.find((x) => x.id === g.id)?.name ?? "").join(", ") },
           { label: app.prompt.lines.window, value: t(c.window.range, { min, max }) },
@@ -195,7 +212,6 @@ export function Composer() {
       <div className="mt-2 flex flex-col gap-4 border-b pb-6 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <h1 className="text-3xl font-medium sm:text-5xl">{c.title}</h1>
-          <p className="mt-2 text-muted-foreground">{c.lead}</p>
         </div>
         <Button variant="outline" onClick={fillExample} className="self-start sm:self-auto">
           <SparklesIcon aria-hidden="true" />
@@ -233,13 +249,9 @@ export function Composer() {
               onChange={(e) => setName(e.target.value)}
               placeholder={c.namePlaceholder}
               aria-invalid={has("name") || undefined}
-              aria-describedby={`${uid}-name-hint`}
               maxLength={60}
               className="mt-3 h-11 max-w-md text-base"
             />
-            <p id={`${uid}-name-hint`} className="mt-1.5 text-sm text-muted-foreground">
-              {c.nameHint}
-            </p>
           </div>
 
           <Fieldset id={`${uid}-g`} title={c.guardians.title} hint={c.guardians.hint} error={has("guardians") ? c.errors.guardians : null}>
@@ -457,8 +469,6 @@ export function Composer() {
               {tx.busy ? c.deploying : c.review}
             </Button>
             <TxFeedback className="mt-3" state={tx.state} onRetry={deploy} onDismiss={tx.reset} />
-            <p className="mt-4 text-xs font-medium text-brass">{common.finance}</p>
-            <p className="mt-1 text-xs text-muted-foreground">{common.legal}</p>
           </div>
         </aside>
       </form>

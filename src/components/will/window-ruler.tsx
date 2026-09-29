@@ -54,10 +54,10 @@ export function WindowRuler({
       {/* Execution flag, above the track */}
       <div className="relative h-11">
         <div
-          className="absolute bottom-0 transition-[left] duration-700 ease-(--ease-quill)"
+          className="absolute bottom-0 w-0 transition-[left] duration-700 ease-(--ease-quill)"
           style={{ left: `${waitPct}%` }}
         >
-          <div className={cn("flex flex-col whitespace-nowrap", anchor(waitPct), waitPct < 14 ? "items-start" : waitPct > 86 ? "items-end" : "items-center")}>
+          <div className={cn("flex w-max flex-col whitespace-nowrap", anchor(waitPct), waitPct < 14 ? "items-start" : waitPct > 86 ? "items-end" : "items-center")}>
             <span
               className={cn(
                 "rounded-sm px-1.5 py-0.5 text-[0.6875rem] font-semibold tracking-wide uppercase",
@@ -99,8 +99,8 @@ export function WindowRuler({
       {/* Today flag, below */}
       <div className="relative h-6">
         {todayPct !== null ? (
-          <div className="absolute top-1.5 transition-[left] duration-700" style={{ left: `${todayPct}%` }}>
-            <span className={cn("block text-xs font-semibold whitespace-nowrap", anchor(todayPct))}>▲ {labels.today}</span>
+          <div className="absolute top-1.5 w-0 transition-[left] duration-700" style={{ left: `${todayPct}%` }}>
+            <span className={cn("block w-max text-xs font-semibold whitespace-nowrap", anchor(todayPct))}>▲ {labels.today}</span>
           </div>
         ) : null}
       </div>

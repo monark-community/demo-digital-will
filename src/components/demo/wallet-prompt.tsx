@@ -63,7 +63,10 @@ export function WalletPrompt() {
               ) : null}
             </dl>
             {s.movesValue ? (
-              <p className="mx-5 mb-4 rounded-sm border border-brass/40 bg-brass-soft px-3 py-2 text-xs font-medium text-brass">{common.finance}</p>
+              <p className="mx-5 mb-4 rounded-sm border border-brass/40 bg-brass-soft px-3 py-2 text-xs font-medium text-brass">
+                {common.finance}
+                {s.legal ? <span className="mt-1 block font-normal">{common.legal}</span> : null}
+              </p>
             ) : null}
             <DialogFooter className="mx-0 mb-0 rounded-b-md px-5">
               <Button variant="outline" onClick={() => prompt?.resolve(false)}>

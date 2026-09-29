@@ -10,7 +10,7 @@ import { intlLocale } from "@/i18n/config"
 import { t } from "@/i18n/t"
 import { toUnits } from "@/lib/demo/tokens"
 import type { EstateRecord } from "@/lib/demo/types"
-import { formatDate, formatDateTime, formatNumber, formatUsd, shortAddress } from "@/lib/format"
+import { formatDateTime, formatNumber, formatUsd, shortAddress } from "@/lib/format"
 import { cn } from "@/lib/utils"
 
 import { useCopy } from "./app-provider"
@@ -85,7 +85,7 @@ export function EstateRecordView({ record, willName, ownerName, bankLabel }: { r
             {t(r.block, { block: new Intl.NumberFormat(intlLocale[locale]).format(record.block) })}
           </p>
         </div>
-        <WaxSeal label={r.sealed} date={formatDate(record.executedAt, locale)} className="self-start" />
+        <WaxSeal label={r.sealed} date={new Intl.DateTimeFormat(intlLocale[locale], { dateStyle: "medium" }).format(record.executedAt)} className="self-start" />
       </header>
 
       <div className="double-rule my-6" aria-hidden="true" />

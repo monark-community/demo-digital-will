@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowLeftIcon, BanknoteIcon, CheckIcon, ClockIcon, GavelIcon, HandshakeIcon, ShieldCheckIcon, WalletIcon, XIcon } from "lucide-react"
+import { ArrowLeftIcon, BanknoteIcon, CheckIcon, ClockIcon, GavelIcon, HandshakeIcon, InfoIcon, ShieldCheckIcon, WalletIcon, XIcon } from "lucide-react"
 import Link from "next/link"
 import { useCallback, useState } from "react"
 import { toast } from "sonner"
@@ -56,7 +56,18 @@ function WindowPanel({ will, now }: { will: Will; now: number }) {
         </h2>
         <span className="text-xs text-muted-foreground">{t(w.weight, { confirmed, total })}</span>
       </div>
-      <p className="mt-1 text-sm text-muted-foreground">{t(w.rule, { min: will.window.minDays, max: will.window.maxDays })}</p>
+      <details className="group mt-1 text-sm">
+        <summary className="inline-flex cursor-pointer list-none items-center gap-1.5 text-muted-foreground hover:text-foreground [&::-webkit-details-marker]:hidden">
+          <InfoIcon className="size-3.5" aria-hidden="true" />
+          {w.how}
+        </summary>
+        <p className="mt-2 max-w-prose text-muted-foreground">
+          {t(w.rule, { min: will.window.minDays, max: will.window.maxDays })}{" "}
+          <Link href={href(locale, "/how-it-works")} className="text-primary underline underline-offset-4">
+            {w.more}
+          </Link>
+        </p>
+      </details>
 
       {running && at ? (
         <>
@@ -142,7 +153,7 @@ function OwnerVeto({ will, now }: { will: Will; now: number }) {
 }
 
 function GuardianActions({ will, now, onExecuted }: { will: Will; now: number; onExecuted: () => void }) {
-  const { app, locale, common } = useCopy()
+  const { app, locale } = useCopy()
   const a = app.will.actions
   const tx = useTx()
   const [last, setLast] = useState<"accept" | "decline" | "confirm" | "execute" | null>(null)
@@ -219,7 +230,6 @@ function GuardianActions({ will, now, onExecuted }: { will: Will; now: number; o
           <HandshakeIcon className="size-6 text-primary" aria-hidden="true" />
           {t(app.dashboard.inviteTitle, { name: will.owner.name })}
         </h2>
-        <p className="mt-2 text-muted-foreground">{app.statusHint.inactive}</p>
         <div className="mt-5 flex flex-col gap-2 sm:flex-row">
           <Button size="lg" onClick={accept} disabled={tx.busy}>
             <CheckIcon aria-hidden="true" />
@@ -244,12 +254,10 @@ function GuardianActions({ will, now, onExecuted }: { will: Will; now: number; o
           <GavelIcon className="size-6 text-primary" aria-hidden="true" />
           {app.will.window.elapsed}
         </h2>
-        <p className="mt-2 text-foreground/85">{a.executeHint}</p>
         <Button size="lg" className="mt-5 w-full sm:w-auto" onClick={execute} disabled={tx.busy}>
           <GavelIcon aria-hidden="true" />
           {a.execute}
         </Button>
-        <p className="mt-3 text-xs font-medium text-brass">{common.finance}</p>
         {feedback}
       </section>
     )
@@ -447,7 +455,6 @@ export function WillView({ id }: { id: string }) {
           <h1 className="text-3xl font-medium sm:text-5xl">{will.name}</h1>
           <StatusBadge status={status} className="text-sm" />
         </div>
-        <p className="text-muted-foreground">{app.statusHint[status]}</p>
         <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
           <span>
             {app.will.contract} <WalletAddress address={will.contract} className="text-foreground" />

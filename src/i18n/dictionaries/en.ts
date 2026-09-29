@@ -21,6 +21,7 @@ const en = {
   common: {
     skip: "Skip to content",
     demoBadge: "Demo · simulated data",
+    demoChip: "Demo",
     finance: "Testnet demo · not financial advice · no real funds",
     legal: "Not legal advice. A WillChain will doesn't replace a legal will.",
     builtWith: "Built with Monark",
@@ -51,12 +52,10 @@ const en = {
   },
   footer: {
     pitch: "An on-chain will for the crypto you hold yourself.",
-    rights: "A testnet demonstration. Nothing here is a legal will.",
   },
   home: {
-    eyebrow: "An on-chain will for self-custody",
     title: "Your keys shouldn't die with you.",
-    lead: "WillChain is a will for your wallets. Guardians you trust confirm your passing, a protection window gives you time to object, and only then does your crypto reach the people you named.",
+    lead: "Guardians you trust confirm your passing. A window gives you time to object. Only then does your crypto reach the people you named.",
     ctaPrimary: "Try the demo",
     ctaSecondary: "How the window works",
     hero: {
@@ -88,7 +87,7 @@ const en = {
       items: [
         { title: "Write it.", body: "Choose guardians, a protection window, beneficiaries and the assets the will holds. You keep full control." },
         { title: "Guardians accept.", body: "Each one signs to take on the role. Until they all have, the will stays inactive." },
-        { title: "The window opens.", body: "When a guardian confirms your passing, a countdown starts. Every further confirmation shortens it. You can stop it with one signature." },
+        { title: "The window opens.", body: "A guardian confirms your passing and a countdown starts. Each confirmation shortens it; one signature from you stops it." },
         { title: "The estate is settled.", body: "Assets are recorded, converted to a stablecoin, locked, then released to the people you named." },
       ],
     },
@@ -100,24 +99,12 @@ const en = {
         { title: "For whoever settles the estate.", body: "A dated record of every asset, conversion and payment, ready for the notary.", alt: "A fountain pen resting on a stack of papers" },
       ],
     },
-    proof: {
-      title: "Try each promise yourself",
-      lead: "Every claim on this page is a flow you can complete in the demo, with the waiting, the confirmations and the failures.",
-      cta: "Try it in the demo",
-      items: [
-        { title: "Weighted guardians", body: "A notary can count double, a friend once. Nobody decides alone." },
-        { title: "Proof of life", body: "Someone confirmed your passing by mistake? Hold one button. The window closes." },
-        { title: "A stable estate", body: "At execution, everything is converted to a stablecoin and locked, so heirs aren't handed a market swing." },
-        { title: "The estate record", body: "Balances, conversions and payments with their transaction hashes, on one printable page." },
-      ],
-    },
     faq: {
       title: "Questions people ask",
       items: [
         { q: "Can a guardian take my crypto?", a: "No. Guardians only sign to accept their role and, later, to confirm. The funds can only go to the beneficiaries you named, and only after the window." },
         { q: "What if a guardian confirms by mistake, or on purpose?", a: "The first confirmation only opens the window. You sign a proof of life, the declaration is cancelled and nobody can declare again for three days." },
         { q: "What if a guardian dies or disappears?", a: "Confirmations speed things up but are never required. Without them, the will simply waits for the maximum window." },
-        { q: "Can I change my will?", a: "Yes: guardians, weights, window, beneficiaries and funds, as long as no window is running. Once a window ends, the will is final." },
         { q: "Does it replace a notarial or legal will?", a: "No. It settles the crypto you put in it and produces a record for your notary. Keep a legal will for everything else." },
         { q: "Is this demo real?", a: "No. It runs on simulated testnet data in your browser. No wallet, funds or personal data are used." },
       ],
@@ -271,7 +258,6 @@ const en = {
       connect: "Connect demo wallet",
       connecting: "Waiting for signature…",
       rejected: "You declined the sign-in request. Nothing was shared.",
-      note: "This demo uses a simulated wallet with testnet balances. You'll sign in as Camille Tremblay.",
     },
     wallet: { disconnect: "Sign out", network: "Sepolia testnet", name: "Camille Tremblay" },
     controls: {
@@ -298,7 +284,6 @@ const en = {
     },
     dashboard: {
       title: "Your estate plan",
-      lead: "Wills you've written, wills you guard, and everything that happened.",
       yours: "Your wills",
       guarding: "Wills you guard",
       activity: "Activity",
@@ -313,7 +298,7 @@ const en = {
       inviteCta: "Review the invitation",
       holding: "Holds {value}",
       owner: "Owner: {name}",
-      guardiansCount: "{accepted} of {total} guardians accepted",
+      guardiansCount: "{accepted} of {total} accepted",
       open: "Open",
     },
     status: {
@@ -363,6 +348,8 @@ const en = {
       roleGuardian: "Guardian (weight {n})",
       window: {
         title: "Protection window",
+        how: "How is this calculated?",
+        more: "The full rule",
         rule: "Between {min} and {max} days after the first confirmation, shorter as more guardians confirm.",
         idleTitle: "No declaration",
         idleBody: "If a guardian confirmed today, the estate could be executed between {earliest} and {latest}.",
@@ -389,7 +376,6 @@ const en = {
         confirm: "Confirm passing",
         confirmHint: "Only confirm if you know the owner has died. The owner can still stop it during the window.",
         execute: "Execute will",
-        executeHint: "Converts the assets to tUSDC, locks them and releases them to the beneficiaries.",
         hold: "Hold to prove you're alive",
         holdKeyboard: "Press and hold Space or Enter for a second and a half.",
         holding: "Keep holding…",
@@ -439,11 +425,10 @@ const en = {
     },
     composer: {
       title: "Write a will",
-      lead: "Everything here can be changed later, as long as no window is running.",
       example: "Fill with an example",
+      hintLabel: "About {title}",
       name: "Name of the will",
       namePlaceholder: "Family savings",
-      nameHint: "Only you and your guardians see it.",
       guardians: {
         title: "Guardians",
         hint: "Pick at least two people. Weight is how much each confirmation counts.",
@@ -560,6 +545,16 @@ const en = {
     activity: {
       deployed: "{actor} deployed the will",
       invited: "{actor} invited {target} as a guardian",
+      invitedYou: "{actor} invited you as a guardian",
+      you: {
+        deployed: "You deployed the will",
+        invited: "You invited {target} as a guardian",
+        accepted: "You accepted the guardian role",
+        declined: "You declined the guardian role",
+        confirmed: "You confirmed the passing",
+        vetoed: "You signed a proof of life",
+        executed: "You executed the will",
+      },
       accepted: "{actor} accepted the guardian role",
       declined: "{actor} declined the guardian role",
       confirmed: "{actor} confirmed the passing",

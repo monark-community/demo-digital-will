@@ -38,7 +38,11 @@ export function ActivityList({ items, now, empty, limit }: { items: ActivityItem
           <span className={cn("relative z-10 mt-1.5 size-2 shrink-0 rounded-full ring-4 ring-background", dot[e.kind])} aria-hidden="true" />
           <div className="min-w-0 flex-1 text-sm">
             <p className="leading-snug">
-              {t(app.activity[e.kind], { actor: who(e.actor), target: e.target === YOU.name ? common.you : (e.target ?? "") })}
+              {e.kind === "invited" && e.target === YOU.name
+                ? t(app.activity.invitedYou, { actor: who(e.actor) })
+                : e.actor === YOU.name
+                  ? t(app.activity.you[e.kind], { target: e.target ?? "" })
+                  : t(app.activity[e.kind], { actor: e.actor, target: e.target ?? "" })}
               {e.willName && e.willId ? (
                 <>
                   {" · "}

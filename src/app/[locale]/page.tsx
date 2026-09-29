@@ -20,7 +20,6 @@ export async function generateMetadata({ params }: PageProps<"/[locale]">): Prom
 }
 
 const problemIcons = [LockKeyholeIcon, EyeIcon, HourglassIcon]
-const proofTargets = ["/app/new", "/app/will/family-savings#veto", "/app/will/helene-cote", "/app/will/helene-cote"]
 
 export default async function Home({ params }: PageProps<"/[locale]">) {
   const { locale } = await params
@@ -33,9 +32,8 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
     <>
       {/* Hero */}
       <section className="mx-auto grid w-full max-w-6xl items-center gap-12 px-4 pt-12 pb-16 sm:px-6 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:pt-20 lg:pb-24">
-        <div>
-          <p className="eyebrow">{d.eyebrow}</p>
-          <h1 className="mt-4 text-[2.625rem] leading-[1.04] font-medium sm:text-6xl lg:text-[4rem]">{d.title}</h1>
+        <div className="min-w-0">
+          <h1 className="text-[2.625rem] leading-[1.04] font-medium sm:text-6xl lg:text-[4rem]">{d.title}</h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">{d.lead}</p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button asChild size="lg">
@@ -48,7 +46,6 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
               <Link href={href(locale, "/how-it-works")}>{d.ctaSecondary}</Link>
             </Button>
           </div>
-          <p className="mt-6 text-xs text-muted-foreground">{dict.common.finance}</p>
         </div>
         <HeroWill
           copy={{
@@ -128,34 +125,6 @@ export default async function Home({ params }: PageProps<"/[locale]">) {
               )
             })}
           </div>
-        </div>
-      </section>
-
-      {/* What the demo proves */}
-      <section className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
-        <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr]">
-          <div>
-            <h2 className="text-3xl font-medium sm:text-4xl">{d.proof.title}</h2>
-            <p className="mt-4 max-w-md text-muted-foreground">{d.proof.lead}</p>
-          </div>
-          <ul className="divide-y border-y">
-            {d.proof.items.map((item, i) => (
-              <li key={item.title} className="flex flex-col gap-3 py-5 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
-                <div>
-                  <p className="font-serif text-xl font-medium">{item.title}</p>
-                  <p className="mt-1 text-muted-foreground">{item.body}</p>
-                </div>
-                <Link
-                  href={href(locale, proofTargets[i] ?? "/app")}
-                  className="inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold text-primary underline decoration-primary/40 underline-offset-4 hover:decoration-primary"
-                >
-                  {d.proof.cta}
-                  <ArrowRightIcon className="size-4" aria-hidden="true" />
-                  <span className="sr-only">: {item.title}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
         </div>
       </section>
 

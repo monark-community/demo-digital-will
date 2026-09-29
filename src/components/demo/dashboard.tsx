@@ -29,7 +29,7 @@ function WillCard({ will, now }: { will: Will; now: number }) {
     <article className="group relative flex flex-col rounded-md border bg-card p-4 transition-colors hover:border-foreground/40 sm:p-5">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <h3 className="truncate text-lg leading-snug font-medium sm:text-xl">
+          <h3 className="text-lg leading-snug font-medium sm:text-xl">
             <Link href={href(locale, `/app/will/${will.id}`)} className="after:absolute after:inset-0 after:rounded-md focus-visible:outline-none">
               {will.name}
             </Link>
@@ -85,7 +85,6 @@ export function Dashboard() {
       <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <h1 className="text-3xl font-medium sm:text-[2.5rem] sm:leading-tight">{d.title}</h1>
-          <p className="mt-2 max-w-xl text-muted-foreground">{d.lead}</p>
         </div>
         <Button asChild size="lg" className="self-start sm:self-auto">
           <Link href={href(locale, "/app/new")}>

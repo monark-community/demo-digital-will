@@ -48,9 +48,9 @@ export function DemoControls() {
       }}
     >
       <DialogTrigger asChild>
-        <Button variant="outline" size="sm">
+        <Button variant="outline" size="sm" aria-label={c.button} className="max-sm:size-10 max-sm:px-0">
           <FlaskConicalIcon aria-hidden="true" />
-          {c.button}
+          <span className="hidden sm:inline">{c.button}</span>
         </Button>
       </DialogTrigger>
       <DialogContent closeLabel={common.close} className="max-h-[calc(100dvh-2rem)] overflow-y-auto sm:max-w-md">

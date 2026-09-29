@@ -52,7 +52,7 @@ export function HeroWill({ copy }: { copy: HeroWillCopy }) {
   const wait = waitDays(MIN, MAX, confirmedWeight, TOTAL)
 
   return (
-    <figure aria-label={copy.label} className="paper relative mx-auto w-full max-w-md rounded-md p-5 sm:p-7">
+    <figure aria-label={copy.label} className="paper relative mx-auto w-full max-w-md min-w-0 rounded-md p-5 sm:p-7">
       <div className="flex items-start justify-between gap-4">
         <div className="min-w-0">
           <p className="eyebrow">{copy.docSub}</p>
