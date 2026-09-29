@@ -4,7 +4,7 @@ export function formatUsd(value: number, locale: Locale, digits = 2): string {
   return new Intl.NumberFormat(intlLocale[locale], {
     style: "currency",
     currency: "USD",
-    currencyDisplay: "narrowSymbol",
+    currencyDisplay: "symbol",
     minimumFractionDigits: digits,
     maximumFractionDigits: digits,
   }).format(value)

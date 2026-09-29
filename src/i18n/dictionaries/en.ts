@@ -66,6 +66,8 @@ const en = {
       guardians: "Guardians",
       confirmed: "Confirmed",
       waiting: "Not yet",
+      dayN: "Day {n}",
+      weight: "Weight {n}",
       people: [
         { name: "Marc T.", role: "Brother" },
         { name: "Nadia H.", role: "Friend" },
@@ -93,9 +95,9 @@ const en = {
     who: {
       title: "Three people, one plan",
       items: [
-        { title: "For the one who holds the keys.", body: "Decide who inherits, who confirms and how long they must wait. Change anything while you're alive.", alt: "A grandmother and her grandchild reading together at home" },
-        { title: "For the people you trust.", body: "A clear role with no access to the funds: accept, and one day, confirm. Nothing more.", alt: "Two people talking across a table" },
-        { title: "For whoever settles the estate.", body: "A dated record of every asset, conversion and payment, ready for the notary.", alt: "Papers, a notebook and a pen on a desk" },
+        { title: "For the one who holds the keys.", body: "Decide who inherits, who confirms and how long they must wait. Change anything while you're alive.", alt: "A grandmother and her granddaughter talking at the breakfast table" },
+        { title: "For the people you trust.", body: "A clear role with no access to the funds: accept, and one day, confirm. Nothing more.", alt: "Two people talking over coffee at a kitchen table" },
+        { title: "For whoever settles the estate.", body: "A dated record of every asset, conversion and payment, ready for the notary.", alt: "A fountain pen resting on a stack of papers" },
       ],
     },
     proof: {
@@ -364,7 +366,7 @@ const en = {
         rule: "Between {min} and {max} days after the first confirmation, shorter as more guardians confirm.",
         idleTitle: "No declaration",
         idleBody: "If a guardian confirmed today, the estate could be executed between {earliest} and {latest}.",
-        first: "First confirmation",
+        first: "Day 0",
         today: "Today",
         execution: "Executable",
         minMark: "Min {n} d",
@@ -376,7 +378,7 @@ const en = {
         cooldown: "Declarations paused until {date} after a proof of life.",
         rulerLabel: "Protection window: the estate can be executed {n} days after the first confirmation",
       },
-      guardians: { title: "Guardians", weight: "Weight {n}", weightLabel: "Voting weight" },
+      guardians: { title: "Guardians", weight: "Weight {n}", weightLabel: "Voting weight", stamp: "Confirmed" },
       assets: { title: "Assets held", total: "Total", value: "≈ {value}" },
       beneficiaries: { title: "Beneficiaries", share: "{n}%" },
       payout: { wallets: "Paid to beneficiaries' wallets in tUSDC", bank: "Paid to the estate bank account ({bank})" },
@@ -397,6 +399,7 @@ const en = {
         youConfirmed: "You confirmed on {date}.",
         youAccepted: "You accepted this role. If the owner dies, you'll be asked to confirm.",
         youDeclined: "You declined this role.",
+        othersConfirmed: "{names} confirmed the owner's passing. If you know it too, add your confirmation: it shortens the wait by your weight.",
         waitGuardians: "Waiting for {n} guardian(s) to accept.",
         ownerActive: "Nothing is running. Your guardians will be asked to confirm if something happens to you.",
         executedBy: "Executed on {date}.",
@@ -458,6 +461,7 @@ const en = {
         min: "Minimum (days)",
         max: "Maximum (days)",
         preview: "With every guardian confirming: {min} days. With one: up to {max} days.",
+        range: "{min}–{max} days",
       },
       beneficiaries: {
         title: "Beneficiaries",
