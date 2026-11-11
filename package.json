@@ -5,7 +5,9 @@
   "description": "WillChain: an on-chain will for self-custodied crypto, with guardians, a protection window and proof of life (simulated testnet demo).",
   "scripts": {
     "dev": "next dev --port 3145",
+    "prebuild": "node scripts/check-node.mjs",
     "build": "next build",
+    "prestart": "node scripts/check-node.mjs",
     "start": "next start --port 3145",
     "lint": "eslint",
     "typecheck": "next typegen && tsc --noEmit",
