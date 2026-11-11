@@ -10,7 +10,7 @@ This repository is the product's demo site: a marketing site plus a fully intera
 
 ## Run it locally
 
-Requires Node 22 and pnpm 10.
+Requires Node 22.23.4 or newer on the 22 line and pnpm 10.
 
 ```sh
 pnpm install
@@ -78,7 +78,7 @@ Design decisions, copy in both languages, the palette with contrast ratios, and 
 
 ## Deploy to Vercel
 
-Import the repository in Vercel and deploy with the framework defaults (Next.js, pnpm, Node 22 from `engines`). No `vercel.json` and no environment variables are required.
+Import the repository in Vercel and deploy with the framework defaults (Next.js, pnpm, Node 22 from `engines`). No `vercel.json` and no environment variables are required. `pnpm build` and `pnpm start` stop on a Node release exposed to CVE-2026-111497.
 
 ## Disclaimer
 
